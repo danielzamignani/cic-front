@@ -1,0 +1,18 @@
+<a routerLink="/item/{{item.id}}">
+    <img [src]="item.imageUrl" [alt]="item.name">
+    <div class="content">
+        <div class="name">
+            {{item.name}}
+        </div>
+        <span class="favorite {{item.favorite ? '' : 'not'}}">
+            ♥
+        </span>
+        <div class="item-card-footer">
+            <div class="price">
+                <span>
+                    {{item.price | currency: 'BRL'}}
+                </span>
+            </div>
+        </div>
+    </div>
+</a>

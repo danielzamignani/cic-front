@@ -8,6 +8,7 @@ import { MenuComponent } from './components/pages/menu/menu.component';
 import { ItemCardComponent } from './components/pages/menu/components/item-card/item-card.component';
 import { StartRatingComponent } from './shared/components/start-rating/start-rating.component';
 import { SearchComponent } from './components/pages/menu/components/search/search.component';
+import { ItemPageComponent } from './components/pages/item-page/item-page.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SearchComponent } from './components/pages/menu/components/search/searc
     MenuComponent,
     ItemCardComponent,
     StartRatingComponent,
-    SearchComponent
+    SearchComponent,
+    ItemPageComponent
   ],
   imports: [
     BrowserModule,

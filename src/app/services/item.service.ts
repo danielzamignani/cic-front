@@ -17,4 +17,9 @@ export class ItemService {
     return this.getAll()
     .filter(item => item.name.toLocaleLowerCase().includes(name.toLocaleLowerCase()));
   }
+  
+  getAllItemById(id: string) {
+    return this.getAll()
+    .find(item => item.id === id) || new Item();
+  }
 }

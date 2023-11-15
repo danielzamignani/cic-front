@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './components/pages/menu/menu.component';
 import { ItemCardComponent } from './components/pages/menu/components/item-card/item-card.component';
+import { StartRatingComponent } from './shared/components/start-rating/start-rating.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MenuComponent,
-    ItemCardComponent
+    ItemCardComponent,
+    StartRatingComponent
   ],
   imports: [
     BrowserModule,

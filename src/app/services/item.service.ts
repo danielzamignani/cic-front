@@ -12,4 +12,9 @@ export class ItemService {
   getAll(): Item[] {
     return sample_items;
   }
+
+  getAllItemsByName(name: string) {
+    return this.getAll()
+    .filter(item => item.name.toLocaleLowerCase().includes(name.toLocaleLowerCase()));
+  }
 }

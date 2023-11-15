@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ItemService } from 'src/app/services/item.service';
 import { Item } from 'src/app/shared/models/item';
 
@@ -11,9 +12,16 @@ export class MenuComponent implements OnInit {
   items: Item[] = [];
 
   constructor(
-    private itemService: ItemService
+    private itemService: ItemService,
+    activatedRoute: ActivatedRoute
   ) {
-    this.items = itemService.getAll();
+    activatedRoute.params.subscribe(params => {
+      if(params.name) {
+        this.items = this.itemService.getAllItemsByName(params.name);
+      } else {
+        this.items = itemService.getAll();
+      }
+    })
   }
 
   ngOnInit(): void {

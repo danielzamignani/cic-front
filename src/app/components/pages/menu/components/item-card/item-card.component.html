@@ -8,6 +8,9 @@
             ♥
         </span>
         <div class="item-card-footer">
+            <div class="stars">
+                <app-start-rating [stars]="item.stars"></app-start-rating>
+            </div>
             <div class="price">
                 <span>
                     {{item.price | currency: 'BRL'}}

@@ -9,6 +9,7 @@ import { ItemCardComponent } from './components/pages/menu/components/item-card/
 import { StartRatingComponent } from './shared/components/start-rating/start-rating.component';
 import { SearchComponent } from './components/pages/menu/components/search/search.component';
 import { ItemPageComponent } from './components/pages/item-page/item-page.component';
+import { CartPageComponent } from './components/pages/cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ItemPageComponent } from './components/pages/item-page/item-page.compon
     ItemCardComponent,
     StartRatingComponent,
     SearchComponent,
-    ItemPageComponent
+    ItemPageComponent,
+    CartPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@ export const sample_items: Item[] = [
         stars: 3.5
     },
     {
-        id: '1',
+        id: '2',
         name: 'Doce',
         imageUrl: 'https://amadoscookies.com.br/wp-content/uploads/2023/09/yt-069_pao-de-queijo_receita-1024x683.jpg',
         favorite: true,
@@ -20,7 +20,7 @@ export const sample_items: Item[] = [
         stars: 3
     },
     {
-        id: '1',
+        id: '3',
         name: 'SAlgado',
         imageUrl: 'https://amadoscookies.com.br/wp-content/uploads/2023/09/yt-069_pao-de-queijo_receita-1024x683.jpg',
         favorite: false,

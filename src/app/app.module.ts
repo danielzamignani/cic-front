@@ -10,6 +10,8 @@ import { StartRatingComponent } from './shared/components/start-rating/start-rat
 import { SearchComponent } from './components/pages/menu/components/search/search.component';
 import { ItemPageComponent } from './components/pages/item-page/item-page.component';
 import { CartPageComponent } from './components/pages/cart-page/cart-page.component';
+import { TitleComponent } from './shared/components/title/title.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { CartPageComponent } from './components/pages/cart-page/cart-page.compon
     SearchComponent,
     ItemPageComponent,
     CartPageComponent,
+    TitleComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

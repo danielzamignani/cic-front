@@ -1,4 +1,8 @@
 <app-search></app-search>
+<app-not-found
+[visible]="!items || !items.length"
+resetLinkText="Reset Search">
+</app-not-found>
 <ul>
     <li *ngFor="let item of items">
         <app-item-card [item]="item"></app-item-card>   

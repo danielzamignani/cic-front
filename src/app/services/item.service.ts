@@ -1,25 +1,28 @@
 import { Injectable } from '@angular/core';
 import { sample_items } from 'src/data';
 import { Item } from '../shared/models/item';
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
 
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
-  getAll(): Item[] {
-    return sample_items;
+  getAllItems(): Observable<Item[]> {
+    return this.httpClient.get<Item[]>(environment.baseURL + '/items');
   }
 
-  getAllItemsByName(name: string) {
-    return this.getAll()
-    .filter(item => item.name.toLocaleLowerCase().includes(name.toLocaleLowerCase()));
+  getAllItemsByName(name: string): Observable<Item[]> {
+    return this.httpClient.get<Item[]>(environment.baseURL + `/items/search?name=${name}`);
   }
   
-  getAllItemById(id: string) {
-    return this.getAll()
-    .find(item => item.id === id) || new Item();
+  getItemById(id: string): Observable<Item> {
+    return this.httpClient.get<Item>(environment.baseURL + `/items/${id}`);
   }
 }

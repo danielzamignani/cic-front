@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ItemService } from 'src/app/services/item.service';
 import { Item } from 'src/app/shared/models/item';
 
@@ -15,13 +16,19 @@ export class MenuComponent implements OnInit {
     private itemService: ItemService,
     activatedRoute: ActivatedRoute
   ) {
+    let itemsObservable: Observable<Item[]>;
+    
     activatedRoute.params.subscribe(params => {
       if(params.name) {
-        this.items = this.itemService.getAllItemsByName(params.name);
+        itemsObservable = this.itemService.getAllItemsByName(params.name);
       } else {
-        this.items = itemService.getAll();
+        itemsObservable = itemService.getAllItems();
       }
-    })
+
+      itemsObservable.subscribe(items => {
+        this.items = items;
+      });
+    });
   }
 
   ngOnInit(): void {

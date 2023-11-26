@@ -20,7 +20,8 @@ export class ItemPageComponent {
   ) {
     activatedRoute.params.subscribe((params) => {
       if(params.id) {
-        this.item = itemService.getAllItemById(params.id);
+        const itemObservable = itemService.getItemById(params.id);
+        itemObservable.subscribe(item => this.item = item);
       }
     });
   }

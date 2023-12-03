@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '../shared/models/user';
 import { IUserLogin } from '../shared/interfaces/IUserLogin';
 import { ToastrService } from 'ngx-toastr';
+import { IUserRegister } from '../shared/interfaces/IUserRegister';
 
 const USER_KEY = 'User';
 
@@ -42,6 +43,24 @@ export class UserService {
         }
       })
     );
+  }
+
+  register(userRegister: IUserRegister): Observable<User> {
+    return this.httpClient.post<User>(environment.baseURL + '/users/signup', userRegister).pipe(
+      tap({
+        next: (user) => {
+          this.setUserToLocalStorage(user);
+          this.userSubject.next(user);
+          this.toastrService.success(
+            `Welcome to Coffe-In-Cloud ${user.name}`,
+            `Register Successful`
+          );
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error, 'Register failed!');
+        }
+      })
+    )
   }
 
   logout() {

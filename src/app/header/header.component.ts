@@ -22,7 +22,9 @@ export class HeaderComponent {
 
     userService.userObervable.subscribe((newUser) => {
       this.user = newUser;
-    })
+    });
+
+    console.log(this.user)
    }
 
    logout() {

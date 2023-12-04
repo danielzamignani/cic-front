@@ -17,7 +17,10 @@ export class TextInputComponent {
   label: string;
 
   @Input()
-  type: 'text' | 'password' | 'email' = 'text';
+  type: 'text' | 'password' | 'email' | 'number' = 'text';
+
+  @Input()
+  maxLength: number;
   
   constructor() {}
 

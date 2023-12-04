@@ -1,7 +1,7 @@
 <app-input-container [label]="label">
-    <input [type]="type" [placeholder]="label" [formControl]="formControl"/>
+    <input [type]="type" [placeholder]="label" [formControl]="formControl" [attr.maxlength]="maxLength || null"/>
     <app-input-validation
-    [control]="control"
-    [showErrorsWhen]="showErrorsWhen">
+        [control]="control"
+        [showErrorsWhen]="showErrorsWhen">
     </app-input-validation>
 </app-input-container>

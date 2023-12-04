@@ -21,7 +21,9 @@ import { InputContainerComponent } from './shared/components/input-container/inp
 import { InputValidationComponent } from './shared/components/input-validation/input-validation.component';
 import { TextInputComponent } from './shared/components/text-input/text-input.component';
 import { DefaultButtonComponent } from './shared/components/default-button/default-button.component';
-import { RegisterPageComponent } from './components/pages/register-page/register-page.component'
+import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
+import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
+import { OrderItemsListComponent } from './components/pages/checkout-page/components/order-items-list/order-items-list.component'
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { RegisterPageComponent } from './components/pages/register-page/register
     InputValidationComponent,
     TextInputComponent,
     DefaultButtonComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    CheckoutPageComponent,
+    OrderItemsListComponent
   ],
   imports: [
     BrowserModule,

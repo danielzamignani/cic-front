@@ -26,6 +26,9 @@ export class UserService {
     this.userObervable = this.userSubject.asObservable();
   }
 
+  public get currentUser(): User {
+    return this.userSubject.value;
+  }
 
   login(userLogin: IUserLogin): Observable<User> {
     return this.httpClient.post<User>(environment.baseURL + '/users/login', userLogin).pipe(

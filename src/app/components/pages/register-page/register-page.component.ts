@@ -56,8 +56,6 @@ export class RegisterPageComponent implements OnInit {
         name: fv.name,
         email: fv.email,
         password: fv.password,
-        zipCode: fv.zipCode,
-        nubmer: fv.number
       };
 
       this.userService.register(user).subscribe(() => {

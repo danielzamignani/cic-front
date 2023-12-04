@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="content">
+      <app-title title="Order Form" fontSize="1.6rem"></app-title>
+      <form [formGroup]="checkoutForm">
+        <app-text-input 
+            [control]="fc.name" 
+            label="Name"
+            [showErrorsWhen]="isSubmitted"
+        ></app-text-input>
+        <app-text-input 
+            [control]="fc.zipCode" 
+            label="Zip Code" 
+            [maxLength]="8"
+            [showErrorsWhen]="isSubmitted"
+        ></app-text-input>
+        <app-text-input 
+            [control]="fc.street" 
+            label="Street"
+            [showErrorsWhen]="isSubmitted"
+        ></app-text-input>
+        <app-text-input 
+            [control]="fc.city" 
+            label="City"
+            [showErrorsWhen]="isSubmitted"
+        ></app-text-input>
+        <app-text-input 
+            [control]="fc.number" 
+            label="Number (Optional)"
+            [showErrorsWhen]="isSubmitted"    
+        ></app-text-input>
+        <app-text-input 
+            [control]="fc.complement" 
+            label="Complement (Optional)"
+            [showErrorsWhen]="isSubmitted"    
+        ></app-text-input>
+      </form>
+      <app-order-items-list [order]="order"></app-order-items-list>
+    </div>
+    <div class="buttons-container">
+      <div class="buttons">
+        <button (click)="createOrder()">
+          Go To Payment
+        </button>
+      </div>
+    </div>
+</div>

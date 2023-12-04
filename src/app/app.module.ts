@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +23,8 @@ import { TextInputComponent } from './shared/components/text-input/text-input.co
 import { DefaultButtonComponent } from './shared/components/default-button/default-button.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
-import { OrderItemsListComponent } from './components/pages/checkout-page/components/order-items-list/order-items-list.component'
+import { OrderItemsListComponent } from './components/pages/checkout-page/components/order-items-list/order-items-list.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { OrderItemsListComponent } from './components/pages/checkout-page/compon
     DefaultButtonComponent,
     RegisterPageComponent,
     CheckoutPageComponent,
-    OrderItemsListComponent
+    OrderItemsListComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,10 +56,12 @@ import { OrderItemsListComponent } from './components/pages/checkout-page/compon
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
-      newestOnTop: false
-    })
+      newestOnTop: false,
+    }),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

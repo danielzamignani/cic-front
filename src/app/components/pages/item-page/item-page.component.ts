@@ -7,21 +7,21 @@ import { Item } from 'src/app/shared/models/item';
 @Component({
   selector: 'app-item-page',
   templateUrl: './item-page.component.html',
-  styleUrls: ['./item-page.component.css']
+  styleUrls: ['./item-page.component.css'],
 })
 export class ItemPageComponent {
   item: Item;
 
-  constructor( 
+  constructor(
     activatedRoute: ActivatedRoute,
     itemService: ItemService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
   ) {
     activatedRoute.params.subscribe((params) => {
-      if(params.id) {
+      if (params.id) {
         const itemObservable = itemService.getItemById(params.id);
-        itemObservable.subscribe(item => this.item = item);
+        itemObservable.subscribe((item) => (this.item = item));
       }
     });
   }

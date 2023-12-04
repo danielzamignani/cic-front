@@ -1,13 +1,10 @@
-import { Address } from "./address";
-import { CartItem } from "./cart-item";
+import { OrderStatusEnum } from '../constants/order_status';
+import { Address } from './address';
+import { CartItem } from './cart-item';
 
 export class Order {
-    id: number;
-    items: CartItem[];
-    totalPrice: number;
-    name: string;
-    paymentId: string;
-    address: Address;
-    createdAt: string;
-    status: string;
+  items: CartItem[];
+  totalPrice: number;
+  name: string;
+  address: Address;
 }

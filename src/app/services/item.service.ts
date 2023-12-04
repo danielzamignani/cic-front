@@ -6,22 +6,21 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ItemService {
-
-  constructor(
-    private httpClient: HttpClient
-  ) { }
+  constructor(private httpClient: HttpClient) {}
 
   getAllItems(): Observable<Item[]> {
     return this.httpClient.get<Item[]>(environment.baseURL + '/items');
   }
 
   getAllItemsByName(name: string): Observable<Item[]> {
-    return this.httpClient.get<Item[]>(environment.baseURL + `/items/search?name=${name}`);
+    return this.httpClient.get<Item[]>(
+      environment.baseURL + `/items/search?name=${name}`,
+    );
   }
-  
+
   getItemById(id: string): Observable<Item> {
     return this.httpClient.get<Item>(environment.baseURL + `/items/${id}`);
   }

@@ -4,7 +4,7 @@ import { AbstractControl, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-text-input',
   templateUrl: './text-input.component.html',
-  styleUrls: ['./text-input.component.css']
+  styleUrls: ['./text-input.component.css'],
 })
 export class TextInputComponent {
   @Input()
@@ -21,7 +21,7 @@ export class TextInputComponent {
 
   @Input()
   maxLength: number;
-  
+
   constructor() {}
 
   get formControl() {

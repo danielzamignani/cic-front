@@ -6,16 +6,16 @@ import { User } from '../shared/models/user';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
   cartQuantity = 0;
   user: User;
 
   constructor(
-    cartService:CartService,
-    private userService: UserService
-    ) {
+    cartService: CartService,
+    private userService: UserService,
+  ) {
     cartService.getCartObservable().subscribe((newCart) => {
       this.cartQuantity = newCart.totalCount;
     });
@@ -24,14 +24,14 @@ export class HeaderComponent {
       this.user = newUser;
     });
 
-    console.log(this.user)
-   }
+    console.log(this.user);
+  }
 
-   logout() {
+  logout() {
     this.userService.logout();
-   }
+  }
 
-   get isAuth() {
+  get isAuth() {
     return !!this.user.token;
-   }
+  }
 }

@@ -12,17 +12,18 @@ import { IUserRegister } from '../shared/interfaces/IUserRegister';
 const USER_KEY = 'User';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-  private userSubject = new BehaviorSubject<User>(this.getUserFromLocalStorage());
+  private userSubject = new BehaviorSubject<User>(
+    this.getUserFromLocalStorage(),
+  );
   public userObervable: Observable<User>;
-
 
   constructor(
     private httpClient: HttpClient,
-    private toastrService: ToastrService
-  ) { 
+    private toastrService: ToastrService,
+  ) {
     this.userObervable = this.userSubject.asObservable();
   }
 
@@ -31,55 +32,59 @@ export class UserService {
   }
 
   login(userLogin: IUserLogin): Observable<User> {
-    return this.httpClient.post<User>(environment.baseURL + '/users/login', userLogin).pipe(
-      tap({
-        next: (user) => {
-          this.setUserToLocalStorage(user);
-          this.userSubject.next(user);
-          this.toastrService.success(
-            `Welcome to Coffe-In-Cloud ${user.name}`,
-            `Login Successful`
-          );
-        },
-        error: (errorResponse) => {
-          this.toastrService.error(errorResponse.error, 'Login fail!');
-        }
-      })
-    );
+    return this.httpClient
+      .post<User>(environment.baseURL + '/users/login', userLogin)
+      .pipe(
+        tap({
+          next: (user) => {
+            this.setUserToLocalStorage(user);
+            this.userSubject.next(user);
+            this.toastrService.success(
+              `Welcome to Coffe-In-Cloud ${user.name}`,
+              `Login Successful`,
+            );
+          },
+          error: (errorResponse) => {
+            this.toastrService.error(errorResponse.error, 'Login fail!');
+          },
+        }),
+      );
   }
 
   register(userRegister: IUserRegister): Observable<User> {
-    return this.httpClient.post<User>(environment.baseURL + '/users/signup', userRegister).pipe(
-      tap({
-        next: (user) => {
-          this.setUserToLocalStorage(user);
-          this.userSubject.next(user);
-          this.toastrService.success(
-            `Welcome to Coffe-In-Cloud ${user.name}`,
-            `Register Successful`
-          );
-        },
-        error: (errorResponse) => {
-          this.toastrService.error(errorResponse.error, 'Register failed!');
-        }
-      })
-    )
+    return this.httpClient
+      .post<User>(environment.baseURL + '/users/signup', userRegister)
+      .pipe(
+        tap({
+          next: (user) => {
+            this.setUserToLocalStorage(user);
+            this.userSubject.next(user);
+            this.toastrService.success(
+              `Welcome to Coffe-In-Cloud ${user.name}`,
+              `Register Successful`,
+            );
+          },
+          error: (errorResponse) => {
+            this.toastrService.error(errorResponse.error, 'Register failed!');
+          },
+        }),
+      );
   }
 
   logout() {
     this.userSubject.next(new User());
     localStorage.removeItem(USER_KEY);
-    window.location.reload()
+    window.location.reload();
   }
 
   private setUserToLocalStorage(user: User) {
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
-  private getUserFromLocalStorage(): User{
+  private getUserFromLocalStorage(): User {
     const userJson = localStorage.getItem(USER_KEY);
 
-    if(userJson) return JSON.parse(userJson) as User;
+    if (userJson) return JSON.parse(userJson) as User;
 
     return new User();
   }

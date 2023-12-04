@@ -7,31 +7,29 @@ import { Item } from 'src/app/shared/models/item';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent implements OnInit {
   items: Item[] = [];
 
   constructor(
     private itemService: ItemService,
-    activatedRoute: ActivatedRoute
+    activatedRoute: ActivatedRoute,
   ) {
     let itemsObservable: Observable<Item[]>;
-    
-    activatedRoute.params.subscribe(params => {
-      if(params.name) {
+
+    activatedRoute.params.subscribe((params) => {
+      if (params.name) {
         itemsObservable = this.itemService.getAllItemsByName(params.name);
       } else {
         itemsObservable = itemService.getAllItems();
       }
 
-      itemsObservable.subscribe(items => {
+      itemsObservable.subscribe((items) => {
         this.items = items;
       });
     });
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 }

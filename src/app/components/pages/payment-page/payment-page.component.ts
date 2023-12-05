@@ -111,7 +111,7 @@ export class PaymentPageComponent {
 
     this.orderService.finishPayment(this.orderId, payment).subscribe({
       next: (res) => {
-        this.router.navigateByUrl(`/track/${this.orderId}`)
+        this.router.navigateByUrl(`/track/${this.orderId}`);
       },
       error: () => {},
     });

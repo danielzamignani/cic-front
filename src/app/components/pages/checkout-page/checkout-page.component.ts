@@ -26,7 +26,7 @@ export class CheckoutPageComponent implements OnInit {
     private toastrService: ToastrService,
     private addressService: AddressService,
     private orderService: OrderService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -54,10 +54,23 @@ export class CheckoutPageComponent implements OnInit {
 
       this.addressService
         .searchAddress(this.fc.zipCode.value)
-        .subscribe((res) => {
-          this.fc.street.setValue(res.street);
-          this.fc.city.setValue(res.city);
-        });
+        .subscribe({
+          next:(res) => {
+            if(res.city.includes('undefined')) {
+              this.toastrService.warning(`Error searching Zip Code`, `Invalid ZipCode`);
+
+              return;
+            }
+
+            this.fc.street.setValue(res.street);
+            this.fc.city.setValue(res.city);
+          },
+          error: (err) => {
+            this.toastrService.warning(`Invalid ZipCode`, `${err.message}`);
+
+            return;
+          }
+      });
     });
 
     const cart = this.cartService.getCart();
@@ -88,10 +101,12 @@ export class CheckoutPageComponent implements OnInit {
     this.order.name = this.fc.name.value;
 
     this.orderService.createOrder(this.order).subscribe({
-      next: (res) => {
+      next:(res) => {
         this.router.navigateByUrl(`/payment/${res.orderId}`);
       },
-      error: () => {},
+      error: ((err) =>{
+        this.toastrService.error(`Creating order Error`, `${err.message}`);
+      })
     });
   }
 }

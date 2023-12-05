@@ -6,7 +6,7 @@ import { Order } from 'src/app/shared/models/order';
 @Component({
   selector: 'app-order-track-page',
   templateUrl: './order-track-page.component.html',
-  styleUrls: ['./order-track-page.component.css']
+  styleUrls: ['./order-track-page.component.css'],
 })
 export class OrderTrackPageComponent {
   order: Order = new Order();
@@ -15,7 +15,7 @@ export class OrderTrackPageComponent {
   constructor(
     orderService: OrderService,
     activatedRoute: ActivatedRoute,
-    router: Router
+    router: Router,
   ) {
     activatedRoute.params.subscribe((param) => {
       if (param.orderId) {

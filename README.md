@@ -1,27 +1,42 @@
-# CoffeInCloud
+# cic-front
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+Este projeto foi desenvolvido usando Angular.
 
-## Development server
+## Pré-requisitos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Certifique-se de ter instalado o Node.js na sua máquina:
 
-## Code scaffolding
+- [Node.js](https://nodejs.org/) (v18.18.00)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Configuração do Ambiente
 
-## Build
+Clone este repositório:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+git clone https://github.com/danielzamignani/cic-front
 
-## Running unit tests
+cd seu-projeto-angular
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Executando o Projeto
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 1. Instalando Dependências
 
-## Further help
+Instale as dependências do Node.js:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+npm install
+```
+
+### 2. Instalando o Angular CLI (se ainda não estiver instalado)
+
+Para executar os comandos do Angular CLI, você precisa ter o Angular CLI instalado. Se ainda não estiver instalado globalmente ou localmente no projeto, execute:
+
+npm install -g @angular/cli
+
+### 3. Iniciando o Servidor de Desenvolvimento
+
+Execute o servidor de desenvolvimento do Angular usando o Angular CLI:
+
+ng serve
+
+O servidor estará disponível em http://localhost:4200/.

@@ -44,7 +44,7 @@
     <div class="checkout">
         <div>
             <div class="items-count">{{cart.totalCount}}</div>
-            <div class="total-price">{{cart.totalPrice}}</div>
+            <div class="total-price">{{cart.totalPrice | currency: 'BRL'}}</div>
         </div>
 
        <a routerLink="/checkout">Proceed to Checkout</a>

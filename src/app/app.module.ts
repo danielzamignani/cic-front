@@ -27,6 +27,7 @@ import { OrderItemsListComponent } from './components/pages/checkout-page/compon
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { PaymentPageComponent } from './components/pages/payment-page/payment-page.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { OrderTrackPageComponent } from './components/pages/order-track-page/order-track-page.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     CheckoutPageComponent,
     OrderItemsListComponent,
     PaymentPageComponent,
+    OrderTrackPageComponent,
   ],
   imports: [
     BrowserModule,

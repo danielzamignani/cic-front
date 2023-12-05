@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 import { Order } from 'src/app/shared/models/order';
 import { Payment } from 'src/app/shared/models/payment';
@@ -23,8 +24,9 @@ export class PaymentPageComponent {
     private orderService: OrderService,
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,
+    private router: Router,
+    private cartService: CartService,
     activatedRoute: ActivatedRoute,
-    router: Router,
   ) {
     activatedRoute.params.subscribe((param) => {
       if (param.orderId) {
@@ -105,9 +107,11 @@ export class PaymentPageComponent {
     payment.expirationDate = this.fc.expirationDate.value;
     payment.paymentMethod = this.fc.paymentMethod.value;
 
+    this.cartService.clearCart();
+
     this.orderService.finishPayment(this.orderId, payment).subscribe({
       next: (res) => {
-        console.log(`sucesso`);
+        this.router.navigateByUrl(`/track/${this.orderId}`)
       },
       error: () => {},
     });

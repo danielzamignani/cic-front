@@ -7,4 +7,8 @@ export class Order {
   totalPrice: number;
   name: string;
   address: Address;
+  id?: string;
+  createdAt?: string;
+  paymentId?: string;
+  status?: string;
 }

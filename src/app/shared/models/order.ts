@@ -1,4 +1,3 @@
-import { OrderStatusEnum } from '../constants/order_status';
 import { Address } from './address';
 import { CartItem } from './cart-item';
 
@@ -11,4 +10,5 @@ export class Order {
   createdAt?: string;
   paymentId?: string;
   status?: string;
+  orderName?: string;
 }

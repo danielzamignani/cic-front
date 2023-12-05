@@ -17,10 +17,19 @@ export class TextInputComponent {
   label: string;
 
   @Input()
-  type: 'text' | 'password' | 'email' | 'number' = 'text';
+  type: 'text' | 'password' | 'email' | 'number' | 'radio' = 'text';
+
+  @Input()
+  value = undefined;
 
   @Input()
   maxLength: number;
+
+  @Input()
+  mask: string = '';
+
+  @Input()
+  dropSpecialCharacters: boolean = true;
 
   constructor() {}
 

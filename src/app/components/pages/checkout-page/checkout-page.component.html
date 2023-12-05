@@ -10,7 +10,7 @@
         <app-text-input 
             [control]="fc.zipCode" 
             label="Zip Code" 
-            [maxLength]="8"
+            [mask]="'00000-000'"
             [showErrorsWhen]="isSubmitted"
         ></app-text-input>
         <app-text-input 
@@ -26,6 +26,7 @@
         <app-text-input 
             [control]="fc.number" 
             label="Number (Optional)"
+            [mask]="'000'"
             [showErrorsWhen]="isSubmitted"    
         ></app-text-input>
         <app-text-input 

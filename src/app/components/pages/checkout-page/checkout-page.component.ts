@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AddressService } from 'src/app/services/address.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -25,6 +26,7 @@ export class CheckoutPageComponent implements OnInit {
     private toastrService: ToastrService,
     private addressService: AddressService,
     private orderService: OrderService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -85,8 +87,11 @@ export class CheckoutPageComponent implements OnInit {
     this.order.address = address;
     this.order.name = this.fc.name.value;
 
-    this.orderService.createOrder(this.order).subscribe((res) => {
-      console.log(res);
+    this.orderService.createOrder(this.order).subscribe({
+      next: (res) => {
+        this.router.navigateByUrl(`/payment/${res.orderId}`);
+      },
+      error: () => {},
     });
   }
 }

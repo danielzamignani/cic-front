@@ -4,4 +4,5 @@ export class Address {
   city: string;
   number?: string;
   complement?: string;
+  uf?: string;
 }

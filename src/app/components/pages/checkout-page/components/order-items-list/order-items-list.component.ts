@@ -12,5 +12,7 @@ export class OrderItemsListComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.order.items);
+  }
 }

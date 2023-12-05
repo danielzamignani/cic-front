@@ -25,6 +25,8 @@ import { RegisterPageComponent } from './components/pages/register-page/register
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { OrderItemsListComponent } from './components/pages/checkout-page/components/order-items-list/order-items-list.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { PaymentPageComponent } from './components/pages/payment-page/payment-page.component';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     RegisterPageComponent,
     CheckoutPageComponent,
     OrderItemsListComponent,
+    PaymentPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,9 +61,12 @@ import { AuthInterceptor } from './auth/auth.interceptor';
       positionClass: 'toast-bottom-right',
       newestOnTop: false,
     }),
+    NgxMaskDirective,
+    NgxMaskPipe,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    provideNgxMask(),
   ],
   bootstrap: [AppComponent],
 })

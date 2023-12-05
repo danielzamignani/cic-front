@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="content">
+        <app-title title="Order Info" fontSize="1.6rem"></app-title>
+        <div class="summary">
+          <div>
+            <h3>Name:</h3>
+            <span>{{order.name}}</span>
+          </div>
+          <div>
+            <h3>Address:</h3>
+            <span>{{orderAddress}}</span>
+          </div>
+          <div *ngIf="!!order.address.complement">
+            <h3>Complement:</h3>
+            <span>{{order.address.complement}}</span>
+          </div>
+        </div>
+        <app-order-items-list [order]="order"></app-order-items-list>
+      </div>
+
+        <div class="content">
+          <app-title class="payment-title" title="Payment Form" fontSize="1.6rem"></app-title>
+          <form [formGroup]="paymentForm">
+            <app-text-input 
+                [control]="fc.cardHolderName" 
+                label="Cardholder Name"
+                [showErrorsWhen]="isSubmitted"
+            ></app-text-input>
+            <app-text-input 
+                [control]="fc.cardHolderDocument" 
+                label="Cardholder Document" 
+                [mask]="'000.000.000-00'"
+                [showErrorsWhen]="isSubmitted"
+            ></app-text-input>
+            <app-text-input 
+                [control]="fc.cardNumber" 
+                label="Card Number"
+                [mask]="'0000 0000 0000 0000'"
+                [showErrorsWhen]="isSubmitted"
+            ></app-text-input>
+            <app-text-input 
+                [control]="fc.expirationDate" 
+                label="Expiration Date (MM/YYYY)"
+                [mask]="'00/0000'"
+                [dropSpecialCharacters]="false"
+                [showErrorsWhen]="isSubmitted"
+            ></app-text-input>
+            <app-text-input 
+                [control]="fc.cvv" 
+                label="CVV"
+                [mask]="'000'"
+                [showErrorsWhen]="isSubmitted"    
+            ></app-text-input>
+            <div class="radio-input">
+                <label>
+                  <input type="radio" formControlName="paymentMethod" value="debit" checked>
+                  Debit
+                </label>
+                <label>
+                  <input type="radio" formControlName="paymentMethod" value="credit">
+                  Credit
+                </label>
+              </div>
+          </form>
+          <div class="buttons-container">
+            <div class="buttons">
+              <button (click)="finishPayment()">
+                Finish Payment
+              </button>
+            </div>
+          </div>
+        </div>  
+</div>
